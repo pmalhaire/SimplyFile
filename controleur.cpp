@@ -22,9 +22,9 @@ QString Controleur::dir(QString  ipath)
         QString current = dirIt.next();
         answer.append(
                     "<li class=\"directory collapsed\">");
-        answer.append("<a href=\"#\" rel=\"");
-        //answer.append(dDir.dirName());
-        //answer.append("/");
+        answer.append("<a href=\"#\" rel=\"/");
+        answer.append(dDir.dirName());
+        answer.append("/");
         answer.append(current);
         answer.append("/\">");
         answer.append(current);
