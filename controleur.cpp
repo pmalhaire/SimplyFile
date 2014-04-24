@@ -4,11 +4,11 @@
 #include <QDirIterator>
 #include <QtCore>
 
-QString Controleur::dir(QString  ipath)
+QString Controleur::dir(QString irootPath, QString  ipath)
 {
     QString sDir;
 
-    sDir.append(QDir::rootPath());
+    if(ipath!=irootPath)sDir.append(irootPath);
     //dir.append(QDir::separator());
     sDir.append(ipath);
     QDir dDir(sDir);
@@ -22,8 +22,8 @@ QString Controleur::dir(QString  ipath)
         QString current = dirIt.next();
         answer.append(
                     "<li class=\"directory collapsed\">");
-        answer.append("<a href=\"#\" rel=\"/");
-        answer.append(dDir.dirName());
+        answer.append("<a href=\"#\" rel=\"");
+        answer.append(sDir.remove(irootPath));
         answer.append("/");
         answer.append(current);
         answer.append("/\">");
@@ -57,7 +57,7 @@ QString Controleur::dir(QString  ipath)
     return answer;
 }
 
-QStringList * Controleur::listDirs(QString sDir){
+QStringList * Controleur::listDirs( QString sDir){
 
     //   # chdir() to user requested dir (root + "/" + dir)
     // Dir.chdir(File.expand_path(path).untaint);
@@ -78,7 +78,7 @@ QStringList * Controleur::listDirs(QString sDir){
 }
 
 
-QStringList * Controleur::listFiles(QString sDir){
+QStringList * Controleur::listFiles( QString sDir){
     QStringList * result = new QStringList();
     QDirIterator fileIt(sDir,
                         QStringList() << "*",

@@ -63,8 +63,7 @@ if(jQuery) (function($){
                         bindTree(c);
                     }
                                 );*/
-                    if( o.root !== t )t=o.root.concat(t);
-                    var data = $(Qt.dir(t));
+                    var data = $(Qt.dir(o.root,t));
                     if(data){
                         $(c).find('.start').html('');
                         $(c).removeClass('wait').append(data);
@@ -85,7 +84,7 @@ if(jQuery) (function($){
                                     $(this).parent().parent().find('LI.directory').removeClass('expanded').addClass('collapsed');
                                 }
                                 $(this).parent().find('UL').remove(); // cleanup
-                                showTree( $(this).parent(), escape($(this).attr('rel').match( /.*\// )) );
+                                showTree( $(this).parent(), escape($(this).attr('rel')) );
                                 $(this).parent().removeClass('collapsed').addClass('expanded');
                             } else {
                                 // Collapse

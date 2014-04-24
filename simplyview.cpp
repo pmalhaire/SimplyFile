@@ -30,9 +30,9 @@ void SimplyView::quit()
     emit quitRequested();
 }
 
-QString SimplyView::dir(QString  string)
+QString SimplyView::dir(QString irootPath, QString  string)
 {
-    return Controleur::dir(string);
+    return Controleur::dir(irootPath,string);
 }
 
 void SimplyView::addToJavaScript()

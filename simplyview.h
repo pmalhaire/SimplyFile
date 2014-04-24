@@ -14,7 +14,7 @@ signals:
 
 public slots:
     void quit();
-    QString dir(QString string);
+    QString dir(QString irootPath, QString string);
 
 private slots:
     void addToJavaScript();
