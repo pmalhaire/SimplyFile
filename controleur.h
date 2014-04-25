@@ -8,11 +8,11 @@
 namespace Controleur
 {
     //returnlist of files in the path
-    QString dir(QString irootPath, QString  ipath);
+    QString dir(QString i_rootPath, QString  i_path);
     //list files in a dir (excluding dirs)
-    QStringList *  listFiles(QString sDir);
+    QStringList *  listFiles(QString i_dir);
     //list dir in a dir (excluding files) 2 entries file and ext
-    QStringList *  listDirs(QString sDir);
+    QStringList *  listDirs(QString i_dir);
 }
 
 #endif // CONTROLEUR_H

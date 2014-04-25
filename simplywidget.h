@@ -10,7 +10,7 @@ class SimplyWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit SimplyWidget(QWidget *parent = 0);
+    explicit SimplyWidget(QWidget *ip_parent = 0);
     ~SimplyWidget();
 
 signals:
@@ -18,7 +18,7 @@ signals:
 public slots:
 
 public:
-    SimplyView* m_SimplyView;
+    SimplyView* mp_SimplyView;
 };
 
 #endif // SIMPLYWIDGET_H

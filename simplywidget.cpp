@@ -2,20 +2,20 @@
 #include "simplyview.h"
 #include <QVBoxLayout>
 
-SimplyWidget::SimplyWidget(QWidget *parent)
-    : QWidget(parent)
-    , m_SimplyView(new SimplyView(this))
+SimplyWidget::SimplyWidget(QWidget *ip_parent)
+    : QWidget(ip_parent)
+    , mp_SimplyView(new SimplyView(this))
 {
     //QWebSettings::globalSettings()->setAttribute(QWebSettings::DeveloperExtrasEnabled, true);
-    connect(m_SimplyView, SIGNAL(quitRequested()), SLOT(close()));
-    QVBoxLayout *layout = new QVBoxLayout;
-    layout->addWidget(m_SimplyView);
-    layout->setMargin(0);
-    setLayout(layout);
+    connect(mp_SimplyView, SIGNAL(quitRequested()), SLOT(close()));
+    QVBoxLayout *p_layout = new QVBoxLayout;
+    p_layout->addWidget(mp_SimplyView);
+    p_layout->setMargin(0);
+    setLayout(p_layout);
 }
 
 
 
 SimplyWidget::~SimplyWidget(){
-    delete m_SimplyView;
+    delete mp_SimplyView;
 }

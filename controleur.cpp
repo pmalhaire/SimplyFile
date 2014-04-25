@@ -4,13 +4,13 @@
 #include <QDirIterator>
 #include <QtCore>
 
-QString Controleur::dir(QString irootPath, QString  ipath)
+QString Controleur::dir(QString i_rootPath, QString  i_path)
 {
     QString sDir;
 
-    if(ipath!=irootPath)sDir.append(irootPath);
+    if(i_path!=i_rootPath)sDir.append(i_rootPath);
     //dir.append(QDir::separator());
-    sDir.append(ipath);
+    sDir.append(i_path);
     QDir dDir(sDir);
     QString answer;
     answer.append("<ul class=\"jqueryFileTree\" style=\"display: none;\">");
@@ -23,7 +23,7 @@ QString Controleur::dir(QString irootPath, QString  ipath)
         answer.append(
                     "<li class=\"directory collapsed\">");
         answer.append("<a href=\"#\" rel=\"");
-        answer.append(sDir.remove(irootPath));
+        answer.append(sDir.remove(i_rootPath));
         answer.append("/");
         answer.append(current);
         answer.append("/\">");
@@ -57,10 +57,10 @@ QString Controleur::dir(QString irootPath, QString  ipath)
     return answer;
 }
 
-QStringList * Controleur::listDirs( QString sDir){
+QStringList * Controleur::listDirs(QString i_dir){
 
     QStringList * result = new QStringList();
-    QDirIterator dirIt(sDir,
+    QDirIterator dirIt(i_dir,
                        QStringList() << "*",
                        QDir::NoSymLinks | QDir::Dirs | QDir::NoDotAndDotDot
                        );
@@ -76,9 +76,9 @@ QStringList * Controleur::listDirs( QString sDir){
 }
 
 
-QStringList * Controleur::listFiles( QString sDir){
+QStringList * Controleur::listFiles(QString i_dir){
     QStringList * result = new QStringList();
-    QDirIterator fileIt(sDir,
+    QDirIterator fileIt(i_dir,
                         QStringList() << "*",
                         QDir::NoSymLinks | QDir::Files | QDir::NoDotAndDotDot);
 

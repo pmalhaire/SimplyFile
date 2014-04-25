@@ -8,13 +8,14 @@ class SimplyView : public QGraphicsView
 {
     Q_OBJECT
 public:
-    explicit SimplyView(QWidget *parent = 0);
+    explicit SimplyView(QWidget *ip_parent = 0);
+    void resizeEvent(QResizeEvent *ip_event);
     ~SimplyView();
 signals:
 
 public slots:
     void quit();
-    QString dir(QString irootPath, QString string);
+    QString dir(QString i_rootPath, QString i_Path);
 
 private slots:
     void addToJavaScript();
@@ -23,7 +24,7 @@ signals:
     void quitRequested();
 
 public:
-        SimplyWeb *m_SimplyWeb;
+        SimplyWeb *mp_SimplyWeb;
 };
 
 #endif // SIMPLYVIEW_H

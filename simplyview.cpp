@@ -3,20 +3,18 @@
 #include "controleur.h"
 #include <QWebFrame>
 
-SimplyView::SimplyView(QWidget *parent) :
-    QGraphicsView(parent)
+SimplyView::SimplyView(QWidget *ip_parent) :
+    QGraphicsView(ip_parent)
 {
-    m_SimplyWeb=new SimplyWeb();
+    mp_SimplyWeb=new SimplyWeb();
     setFrameShape(QFrame::NoFrame);
-
-
 
     QGraphicsScene *scene = new QGraphicsScene;
     setScene(scene);
 
-    scene->addItem(m_SimplyWeb);
-    scene->setActiveWindow(m_SimplyWeb);
-    connect(m_SimplyWeb->page()->mainFrame(),
+    scene->addItem(mp_SimplyWeb);
+    scene->setActiveWindow(mp_SimplyWeb);
+    connect(mp_SimplyWeb->page()->mainFrame(),
             SIGNAL(javaScriptWindowObjectCleared()), SLOT(addToJavaScript()));
     setFixedHeight(800);
     setFixedWidth(600);
@@ -26,7 +24,7 @@ SimplyView::SimplyView(QWidget *parent) :
 
 SimplyView::~SimplyView()
 {
-            delete m_SimplyWeb;
+            delete mp_SimplyWeb;
 }
 
 void SimplyView::quit()
@@ -34,17 +32,17 @@ void SimplyView::quit()
     emit quitRequested();
 }
 
-QString SimplyView::dir(QString irootPath, QString  string)
+QString SimplyView::dir(QString i_rootPath, QString  i_Path)
 {
-    return Controleur::dir(irootPath,string);
+    return Controleur::dir(i_rootPath,i_Path);
 }
 
 void SimplyView::addToJavaScript()
 {
-    m_SimplyWeb->page()->mainFrame()->addToJavaScriptWindowObject("Qt", this);
+    mp_SimplyWeb->page()->mainFrame()->addToJavaScriptWindowObject("Qt", this);
 }
 
-void SimplyView::resizeEvent(QResizeEvent *event)
+void SimplyView::resizeEvent(QResizeEvent *ip_event)
 {
-    m_SimplyWeb->resize(event->size());
+    mp_SimplyWeb->resize(ip_event->size());
 }
