@@ -18,6 +18,10 @@ SimplyView::SimplyView(QWidget *parent) :
     scene->setActiveWindow(m_SimplyWeb);
     connect(m_SimplyWeb->page()->mainFrame(),
             SIGNAL(javaScriptWindowObjectCleared()), SLOT(addToJavaScript()));
+    setFixedHeight(800);
+    setFixedWidth(600);
+    setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 }
 
 SimplyView::~SimplyView()
@@ -38,4 +42,9 @@ QString SimplyView::dir(QString irootPath, QString  string)
 void SimplyView::addToJavaScript()
 {
     m_SimplyWeb->page()->mainFrame()->addToJavaScriptWindowObject("Qt", this);
+}
+
+void SimplyView::resizeEvent(QResizeEvent *event)
+{
+    m_SimplyWeb->resize(event->size());
 }

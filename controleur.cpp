@@ -36,7 +36,7 @@ QString Controleur::dir(QString irootPath, QString  ipath)
     QStringListIterator fileIt(*aFiles);
     while (fileIt.hasNext()) {
         QString current = fileIt.next();
-        answer.append("<li class=\"file ext_#");
+        answer.append("<li class=\"file ext_");
         answer.append(current);
         answer.append("\">");
 
@@ -59,8 +59,6 @@ QString Controleur::dir(QString irootPath, QString  ipath)
 
 QStringList * Controleur::listDirs( QString sDir){
 
-    //   # chdir() to user requested dir (root + "/" + dir)
-    // Dir.chdir(File.expand_path(path).untaint);
     QStringList * result = new QStringList();
     QDirIterator dirIt(sDir,
                        QStringList() << "*",

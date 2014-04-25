@@ -51,18 +51,6 @@ if(jQuery) (function($){
                 function showTree(c, t) {
                     $(c).addClass('wait');
                     $(".jqueryFileTree.start").remove();
-                    /*$.post(
-                                o.script,
-                                { dir: t },
-                                function(data) {
-                        $(c).find('.start').html('');
-                        $(c).removeClass('wait').append(data);
-                        if( o.root == t ) $(c).find('UL:hidden').show();
-                        else $(c).find('UL:hidden').slideDown(
-                                 { duration: o.expandSpeed, easing: o.expandEasing });
-                        bindTree(c);
-                    }
-                                );*/
                     var data = $(Qt.dir(o.root,t));
                     if(data){
                         $(c).find('.start').html('');

@@ -8,19 +8,15 @@
 #include <QFileInfo>
 #include <QUrl>
 
+#define DEBUG
+
+
 int main(int argc, char **argv)
 {
 	QApplication app(argc, argv);
-
+#ifdef DEBUG
     QWebSettings::globalSettings()->setAttribute(QWebSettings::DeveloperExtrasEnabled, true);
-    //connect(m_d, SIGNAL(quitRequested()), SLOT(close()));
-
-    //QGraphicsWebView *view = new QGraphicsWebView();
-    //QString fileName("file://SimplyFile/index.htm");
-    //view->setUrl(QUrl::fromLocalFile(QFileInfo(fileName).absoluteFilePath()));
-    //view->load(QUrl::fromLocalFile(QFileInfo(fileName).absoluteFilePath()));
-
-    //view->show();
+#endif
    SimplyWidget appView;
    QString fileName("html/index.html");
    QUrl adress = QUrl::fromLocalFile(QFileInfo(fileName).absoluteFilePath());
